@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "2.0.21"
-    id("com.typewritermc.module-plugin") version "1.3.0"
+    kotlin("jvm") version "2.2.10"
+    id("com.typewritermc.module-plugin") version "2.0.0"
 }
 
 group = "dev.willem.extension"

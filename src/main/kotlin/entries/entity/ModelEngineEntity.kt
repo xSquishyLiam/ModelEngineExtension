@@ -15,6 +15,8 @@ import com.typewritermc.engine.paper.entry.entries.EntityProperty
 import com.typewritermc.engine.paper.entry.entries.Var
 import com.typewritermc.engine.paper.utils.toBukkitLocation
 import com.typewritermc.entity.entries.data.minecraft.GlowingEffectProperty
+import com.typewritermc.entity.entries.data.minecraft.SpeedData
+import com.typewritermc.entity.entries.data.minecraft.SpeedProperty
 import com.typewritermc.entity.entries.data.minecraft.living.EquipmentProperty
 import com.typewritermc.entity.entries.data.minecraft.living.ScaleProperty
 import com.typewritermc.entity.entries.data.minecraft.living.armorstand.InvisibleProperty
@@ -48,7 +50,7 @@ class ModelEngineEntity(
         get() = entity.entityId
 
     override val state: EntityState
-        get() = EntityState(height(), 0.2085f)
+        get() = EntityState(height(), speed())
 
     val modelId = modelId.get(player)
     val location: Queue<Location> = ConcurrentLinkedQueue()
@@ -177,6 +179,10 @@ class ModelEngineEntity(
         val scale = property(ScaleProperty::class)?.scale ?: 1.0
 
         return blueprint.mainHitbox.height * scale
+    }
+
+    fun speed(): Float {
+        return property(SpeedProperty::class)?.speed ?: 0.2085f;
     }
 
     fun isMoving(prev: Location, current: Location, threshold: Double = 0.01): Boolean {

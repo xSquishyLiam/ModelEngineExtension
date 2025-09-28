@@ -76,7 +76,7 @@ class ModelEngineEntity(
                         setProperty(ProfileProperty("textures", property.texture, property.signature))
                     }
 
-                    activeModel.bones.forEach { _, bone ->
+                    activeModel.bones.forEach { (_, bone) ->
                         bone.getBoneBehavior(BoneBehaviorTypes.PLAYER_LIMB).ifPresent { behavior ->
                             behavior.setTexture(profile)
                         }
